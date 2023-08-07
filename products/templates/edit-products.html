@@ -1,0 +1,61 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block head_lib %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock head_lib %}
+
+{% block content %}
+    <div class="container-fluid p-0">
+        <div class="col-12 d-none d-sm-block">
+            <h3><strong>Edit Produk</strong></h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Library</a></li>
+                    <li class="breadcrumb-item active">Data</li>
+                </ol>
+            </nav>
+            <hr style="border: 2px solid #1e8a97;">
+        </div>
+        <div class="row">
+            <div class="col-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="mb-3 col-md-8">
+                                    <label class="form-label">Nama Produk</label>
+                                    {{form.nama_produk}}
+                                </div>
+                                <div class="mb-3 col-md-8">
+                                    <label class="form-label">Type</label>
+                                    {{form.type_produk}}
+                                </div>
+                                <div class="mb-3 col-md-8">
+                                    <label class="form-label">Client</label>
+                                    <select class="form-control choices-single" name="nama_client" id="nama_client">
+                                        {% for client in clients %}
+                                        <option value="{{ client.id }}">{{ client.nama_client }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end gap-3">
+                                <button class="btn btn-outline-success">Cancel</button>
+                                <button class="btn btn-main" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block body_lib %}
+    <script src="{% static 'js/jquery-3.7.0-min.js' %}"></script>
+    <script src="{% static 'js/datatables.js' %}"></script>
+    <script src="{% static 'js/custom-products.js' %}"></script>
+{% endblock body_lib %}

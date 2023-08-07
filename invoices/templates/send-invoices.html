@@ -1,0 +1,118 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block head_lib %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock head_lib %}
+
+{% block content %}
+    <div class="container-fluid p-0">
+        <div class="col-12 d-none d-sm-block">
+            <h3><strong>Add Invoice</strong></h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Library</a></li>
+                    <li class="breadcrumb-item active">Data</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-12 col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="fs-3 text-dark fw-bolder">Send Invoice To</h5>
+                    </div>
+                    <div class="card-body">
+                        <form action="">
+                            <div class="mb-3 col-md-8">
+                                <label class="form-label">Nama Client:</label>
+                                <select class="form-control choices-single">
+                                    <option value="" disabled selected>Select Client</option>
+                                    <option value="CA">California</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="WA">Washington</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label">Email:</label>
+                                <input type="text" class="form-control" placeholder="GuraGu@gmail.com" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label">No. Telp(WA):</label>
+                                <input type="text" class="form-control" placeholder="081428793873" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <div class="form-label">Send via:</div>
+                                <div class="d-flex gap-3">
+                                    <div class="input-group d-flex gap-3">
+                                        <div class="d-flex align-content-center col-md-6">
+                                            <label class="form-check m-0">
+                                                <input type="checkbox" class="form-check-input">
+                                                <span class="form-check-label">Email</span>
+                                            </label>
+                                        </div>
+                                        <div class="d-flex align-content-center col-md-5">
+                                            <label class="form-check m-0">
+                                                <input type="checkbox" class="form-check-input">
+                                                <span class="form-check-label">Whatsapp</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 col-md-8">
+                                <label class="form-label">Text:</label>
+								<textarea class="form-control" placeholder="*Dear Admin, it's invoice time for...." rows="3"></textarea>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-outline-success" id="btn-cancel">Cancel</button>
+                                    <button class="btn btn-warning">Previous</button>
+                                    <button class="btn btn-main" id="btn-send">Send</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block body_lib %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'js/jquery-3.7.0.min.js' %}"></script>
+    <script>
+        $("#btn-send").click(function (e) { 
+            e.preventDefault();
+            Swal.fire(
+                'Good job!',
+                'You clicked the button!',
+                'success'
+            )
+        });
+
+        $("#btn-cancel").click(function (e) { 
+            e.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                    )
+                }
+            })
+        });
+    </script>
+{% endblock body_lib %}

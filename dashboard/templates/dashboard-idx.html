@@ -1,0 +1,186 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block content %}
+<form action="post" enctype="multipart/form-data"></form>
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0 fs-3 text-success mx-3">Let's Manage</h5>
+                        <h5 class="card-title mb-0 fs-3 text-success d-flex justify-content-center">Your Invoice</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img src="{% static 'img/icons/card-icon.png' %}" width="265px" class="d-block mx-auto" />
+                            <a href="#" class="btn btn-success mt-3">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0 fs-3 text-dark">Today Schhedule</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group overflow-auto" style="max-height: 280.7px;">
+                            <div class="alert alert-success alert-dismissible" role="alert">
+                                <div class="alert-message">
+                                    <div class="d-flex align-items-center">
+                                        <div class="alert-icon rounded-circle bg-light">
+                                            <i class="far fa-fw fa-bell"></i>
+                                        </div>
+                                        <div class="alert-message">
+                                            <div class="fs-5 fw-bolder flex-grow-1">Konoha</div>
+                                            <span class="fs-6 fw-lighter">24 November 2022 - <b>9:35 AM</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <button class="btn btn-pill btn-light">Done</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="alert alert-success alert-dismissible" role="alert">
+                                <div class="alert-message">
+                                    <div class="d-flex align-items-center">
+                                        <div class="alert-icon rounded-circle bg-light">
+                                            <i class="far fa-fw fa-bell"></i>
+                                        </div>
+                                        <div class="alert-message">
+                                            <div class="fs-5 fw-bolder flex-grow-1">Konoha</div>
+                                            <span class="fs-6 fw-lighter">24 November 2022 - <b>9:35 AM</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <button class="btn btn-pill btn-light">Done</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="alert alert-success alert-dismissible" role="alert">
+                                <div class="alert-message">
+                                    <div class="d-flex align-items-center">
+                                        <div class="alert-icon rounded-circle bg-light">
+                                            <i class="far fa-fw fa-bell"></i>
+                                        </div>
+                                        <div class="alert-message">
+                                            <div class="fs-5 fw-bolder flex-grow-1">Konoha</div>
+                                            <span class="fs-6 fw-lighter">24 November 2022 - <b>9:35 AM</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <button class="btn btn-pill btn-light">Done</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="card flex-fill">
+                    <div class="card-body d-flex">
+                        <div class="align-self-center w-100">
+                            <div class="chart">
+                                <div id="datetimepicker-dashboard"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0 fs-3 text-dark">Upcoming Schhedule</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group overflow-auto" style="max-height:301px;">
+                            <div class="alert alert-info alert-dismissible" role="alert">
+                                <div class="alert-message">
+                                    <div class="d-flex align-items-center">
+                                        <div class="alert-icon rounded-circle bg-light">
+                                            <i class="far fa-fw fa-clock"></i>
+                                        </div>
+                                        <div class="alert-message">
+                                            <div class="d-flex">
+                                                <div class="fs-5 fw-bolder flex-grow-1">Soul Society</div>
+                                                <div class="fs-6 fw-lighter">9:35 AM</div>
+                                            </div>
+                                            <span class="fs-6 fw-lighter">24 Januari 2022</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="alert alert-info alert-dismissible" role="alert">
+                                <div class="alert-message">
+                                    <div class="d-flex align-items-center">
+                                        <div class="alert-icon rounded-circle bg-light">
+                                            <i class="far fa-fw fa-clock"></i>
+                                        </div>
+                                        <div class="alert-message">
+                                            <div class="d-flex">
+                                                <div class="fs-5 fw-bolder flex-grow-1">Soul Society</div>
+                                                <div class="fs-6 fw-lighter">9:35 AM</div>
+                                            </div>
+                                            <span class="fs-6 fw-lighter">24 Januari 2022</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="alert alert-info alert-dismissible" role="alert">
+                                <div class="alert-message">
+                                    <div class="d-flex align-items-center">
+                                        <div class="alert-icon rounded-circle bg-light">
+                                            <i class="far fa-fw fa-clock"></i>
+                                        </div>
+                                        <div class="alert-message">
+                                            <div class="d-flex">
+                                                <div class="fs-5 fw-bolder flex-grow-1">Soul Society</div>
+                                                <div class="fs-6 fw-lighter">9:35 AM</div>
+                                            </div>
+                                            <span class="fs-6 fw-lighter">24 Januari 2022</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="alert alert-info alert-dismissible" role="alert">
+                                <div class="alert-message">
+                                    <div class="d-flex align-items-center">
+                                        <div class="alert-icon rounded-circle bg-light">
+                                            <i class="far fa-fw fa-clock"></i>
+                                        </div>
+                                        <div class="alert-message">
+                                            <div class="d-flex">
+                                                <div class="fs-5 fw-bolder flex-grow-1">Soul Society</div>
+                                                <div class="fs-6 fw-lighter">9:35 AM</div>
+                                            </div>
+                                            <span class="fs-6 fw-lighter">24 Januari 2022</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block body_lib %}
+    <script src="{% static 'js/jquery-3.7.0.min.js' %}"></script>
+    <script src="{% static 'js/custom-dashboard.js' %}"></script>
+    <script>
+		document.addEventListener("DOMContentLoaded", function() {
+			var date = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000);
+			var defaultDate = date.getUTCFullYear() + "-" + (date.getUTCMonth() + 1) + "-" + date.getUTCDate();
+			document.getElementById("datetimepicker-dashboard").flatpickr({
+				inline: true,
+				prevArrow: "<span class=\"fas fa-chevron-left\" title=\"Previous month\"></span>",
+				nextArrow: "<span class=\"fas fa-chevron-right\" title=\"Next month\"></span>",
+				defaultDate: defaultDate
+			});
+		});
+	</script>
+{% endblock body_lib %}

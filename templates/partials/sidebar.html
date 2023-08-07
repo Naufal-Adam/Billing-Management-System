@@ -1,0 +1,63 @@
+{% load static %}
+<nav id="sidebar" class="sidebar js-sidebar">
+    <div class="sidebar-content js-simplebar">
+        <a class="sidebar-brand" href="{% url 'dashboard_njir' %}">
+            <img src="{% static 'img/icons/logo.png' %}" width="72px">
+        </a>
+        
+        <div class="sidebar-user">
+            <div class="d-flex justify-content-center">
+                <div class="flex-shrink-0">
+                    {% if imageku.imageProfil %}
+                    <img src="{{ imageku.imageProfil.url }}" class="avatar img-fluid rounded me-1" alt="{{user.username}}" />
+                    {% endif %}
+                </div>
+                <div class="flex-grow-1 ps-2">
+                    <a class="sidebar-user-title dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        {{user.username}}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-start">
+                        <a class="dropdown-item" href="{% url 'profil_edit' pk=user.pk%}"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+                        <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="pages-settings.html"><i class="align-middle me-1" data-feather="settings"></i> Settings &
+                            Privacy</a>
+                        <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'logout_njir' %}">Log out</a>
+                    </div>
+
+                    <div class="sidebar-user-subtitle">Designer</div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="sidebar-nav">
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{% url 'dashboard_njir' %}">
+                    <i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="pages-profile.html">
+                    <i class="align-middle" data-feather="file-text"></i> <span class="align-middle">Invoice</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{% url 'client_njir' %}">
+                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Client</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{% url 'produk_view' %}">
+                    <i class="align-middle" data-feather="box"></i> <span class="align-middle">Produk</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="pages-profile.html">
+                    <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Setting</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

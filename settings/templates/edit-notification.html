@@ -1,0 +1,103 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid p-0">
+	<div class="col-12 d-none d-sm-block">
+		<h3><strong>Edit Notification</strong></h3>
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+				<li class="breadcrumb-item"><a href="#">Library</a></li>
+				<li class="breadcrumb-item active">Data</li>
+			</ol>
+		</nav>
+	</div>
+	<div class="row">
+		<div class="col-12 col-xl-12">
+			<div class="card">
+				<div class="card-body">
+					<form>
+						<div class="row">
+							<div class="mb-3 col-md-6">
+								<label class="form-label">Date:</label>
+								<input type="text" class="form-control flatpickr-date" placeholder="Date" />
+							</div>
+							<div class="mb-3 col-md-6">
+								<label class="form-label">Time:</label>
+								<input type="text" class="form-control flatpickr-time" placeholder="HH:MM" />
+							</div>
+						</div>
+						<div class="mb-3 col-md-8">
+							<label class="form-label">Client:</label>
+							<select class="form-control choices-single">
+								<option value="" disabled selected>Nama Client</option>
+								<option value="CA">California</option>
+								<option value="NV">Nevada</option>
+								<option value="OR">Oregon</option>
+								<option value="WA">Washington</option>
+							</select>
+						</div>
+						<div class="mb-3 col-md-8">
+							<label class="form-label">Product:</label>
+							<select class="form-control choices-single">
+								<option value="" disabled selected>Nama Client</option>
+								<option value="CA">California</option>
+								<option value="NV">Nevada</option>
+								<option value="OR">Oregon</option>
+								<option value="WA">Washington</option>
+							</select>
+						</div>
+						<div class="mb-3 col-md-8">
+							<label class="form-label">Text:</label>
+							<textarea class="form-control" placeholder="*Dear Admin, it's invoice time for...." rows="3"></textarea>
+						</div>
+						<div class="mb-3 col-md-8">
+							<div class="form-label">Send to:</div>
+							<div class="input-group d-flex gap-3">
+								<div class="d-flex align-content-center col-md-6">
+									<div class="input-group-text bg-transparent" style="border: none;">
+										<input type="checkbox">
+									</div>
+									<input type="text" class="form-control" placeholder="aizensosuke@gmail.com">
+								</div>
+								<div class="d-flex align-content-center col-md-5">
+									<div class="input-group-text bg-transparent" style="border: none;">
+										<input type="checkbox">
+									</div>
+									<input type="text" class="form-control" placeholder="081234567859">
+								</div>
+							</div>
+						</div>						
+						<div class="mb-3">
+							<label class="form-check m-0">
+								<input type="checkbox" class="form-check-input">
+								<span class="form-check-label">Repeat this notification</span>
+							</label>
+						</div>
+						<div class="mb-3 col-md-8">
+							<div class="border p-3 rounded">
+								<div class="form-check form-switch form-check-reverse d-flex justify-content-between">
+									<label class="form-check-label" for="flexSwitchCheckDefault">Status</label>
+									<input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+								</div>
+							</div>
+						</div>
+						<div class="mb-3 col-md-2 d-flex gap-3">
+							<button class="btn btn-outline-success" id="btn-cancel">Cancel</button>
+							<button class="btn btn-success" id="btn-submit">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}
+
+{% block body_lib %}
+	<script src="{% static 'js/jquery-3.7.0.min.js' %}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="{% static 'js/custom-settings.js' %}"></script>
+{% endblock body_lib %}

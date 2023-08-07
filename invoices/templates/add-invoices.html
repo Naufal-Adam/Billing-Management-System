@@ -1,0 +1,113 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block head_lib %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock head_lib %}
+
+{% block content %}
+<div class="container-fluid p-0">
+    <div class="col-12 d-none d-sm-block">
+        <h3><strong>Add Invoice</strong></h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Library</a></li>
+                <li class="breadcrumb-item active">Data</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-12 col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action="">
+                        <div class="row">
+                            <div class="mb-3 col-md-8">
+                                <label class="form-label">No Invoice:</label>
+                                <input type="text" class="form-control" placeholder="No Invoice" />
+                            </div>
+                            <div class="mb-3 col-md-8">
+                                <label class="form-label">Client</label>
+                                <select class="form-control choices-single">
+                                    <option value="" disabled selected>Select Client</option>
+                                    <option value="CA">California</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="WA">Washington</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-8">
+								<label class="form-label">Invoice Date:</label>
+								<input type="text" class="form-control flatpickr-date" placeholder="Date" />
+							</div>
+                            <div class="mb-3 col-md-8">
+								<label class="form-label">Due Date:</label>
+								<input type="text" class="form-control flatpickr-date" placeholder="Date" />
+							</div>
+                            <div class="mb-3 col-md-8">
+                                <label class="form-label">Product:</label>
+                                <select class="form-control choices-single">
+                                    <option value="" disabled selected>Select Product</option>
+                                    <option value="CA">California</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="WA">Washington</option>
+                                </select>
+                                <div class="mt-2 col-md-12">
+                                    <input type="text" class="form-control flatpickr-date" placeholder="Input an item" />
+                                </div>
+                                <div class="mt-2 row">
+                                    <div class="d-flex gap-3">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control flatpickr-date" placeholder="Qty" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control flatpickr-date" placeholder="Price" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-main mb-3">Add product</button>
+                    </form>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width:5%;">No.</th>
+                                    <th style="width:20%">Produk</th>
+                                    <th style="width:25%;">Item</th>
+                                    <th style="width:20%;">Price</th>
+                                    <th style="width:5%;">Qty</th>
+                                    <th style="width:20%;">Subtotal</th>
+                                    <th style="width:5%;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex gap-3 flex-wrap">
+                            <button class="btn btn-success">Preview Invoice</button>
+                            <button class="btn btn-warning">Edit</button>
+                        </div>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <button class="btn btn-outline-success">Cancel</button>
+                            <button class="btn btn-main">Next</button>
+                            <button class="btn btn-main">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block body_lib %}
+    <script src="{% sttaic 'js/jquery-3.7.0.min.js' %"></script>
+    <script src="{% static 'js/custom-invoices.js' %}"></script>
+{% endblock body_lib %}

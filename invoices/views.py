@@ -1,11 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+from profiles.models import profil
 
 # Create your views here.
-def index(request):
-    return render(request, "invoices-idx.html",)
+def invoice(request):
+    return render(request, "invoices-idx.html")
 
-def store(request):
-    return render(request, "add-invoices.html")
-
-def send(request):
-    return render(request, "send-invoices.html")
+def add_invoice(request):
+    return render(request, 'add-invoices.html')

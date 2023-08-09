@@ -6,10 +6,10 @@ from django.contrib.auth.models import User
 class WaForm(forms.ModelForm):
     no_wa = forms.CharField(
         max_length=100,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Masukkan Nomor WhatsApp', 'id': 'wa', 'disabled' : True})
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Masukkan Nomor WhatsApp'}),
     )
     imageProfil = forms.ImageField(
-        widget=forms.FileInput(attrs={'class': 'form-control', 'id': 'image', 'disabled': True})
+        widget=forms.FileInput(attrs={'class': 'btn btn-info', 'id': 'imageProfil'})
     )
     class Meta:
         model = profil
@@ -18,19 +18,19 @@ class WaForm(forms.ModelForm):
 class CustomTabelUserForm(UserChangeForm):
     username = forms.CharField(
         max_length=100,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Masuk Username', 'id': 'username', 'disabled': True}),
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Masuk Username'}),
     )
     email = forms.CharField(
         max_length=100,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Masuk Email', 'id': 'email', 'disabled' : True})
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Masuk Email'})
     )
     first_name = forms.CharField(
         max_length=100,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Masuk Nama Depan', 'id': 'depan', 'disabled' : True})
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Masuk Nama Depan'})
     )
     last_name = forms.CharField(
         max_length=100,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Masuk Nama Belakang', 'id': 'belakang', 'disabled' : True})
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Masuk Nama Belakang'})
     )
     class Meta:
         model = User

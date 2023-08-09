@@ -1,0 +1,75 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block head_lib %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock head_lib %}
+
+{% block content %}
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-12 d-none d-sm-block">
+                <h3><strong>Edit Profile</strong></h3>
+                <hr style="border: 2px solid #1e8a97;">
+            </div>
+            <div class="mb-3 col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4><strong>Avatar</strong></h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data" class="form">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="mb-3 col-md-8">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        {% if imageku.imageProfil %}
+                                        <img src="{{ imageku.imageProfil.url }}" alt="{{user.username}}" class="img-fluid rounded-circle mb-2" width="128" height="128" />
+                                        {% endif %}
+                                        <div id="trigger-container" class="col-md-4 d-flex justify-content-evenly gap-3 w-auto">
+                                            {{formWa.imageProfil}}
+                                            <a href="" type="button" class="btn btn-outline-danger" id="removeFile">Remove</a>                                  
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Username</label>
+                                    {{formBiasa.username}}
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="full-name" placeholder="{{user.first_name}} {{user.last_name}}" disabled/>
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Email</label>
+                                    {{formBiasa.email}}
+                                </div>
+                                
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Nama Depan</label>
+                                    {{formBiasa.first_name}}
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Nama Belakang</label>
+                                    {{formBiasa.last_name}}
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">No. Telp(WA)</label>
+                                    {{formWa.no_wa}}
+                                </div>
+                            </div>
+                            <div class="d-flex gap-3 justify-content-end">
+                                <a class="btn btn-outline-success" id="btn-cancel">Cancel</a>
+                                <button class="btn btn-success" id="btn-update" type="submit">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block body_lib %}
+    <script src="{% static 'js/custom-profile.js' %}"></script>
+{% endblock body_lib %}

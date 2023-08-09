@@ -3,12 +3,14 @@ from .models import produk
 from clients.models import client
 from clients.formKhususClient import ClientForm
 from .form import ProdukForm
+from profiles.models import profil
 
 # Create your views here.
 def produk_view(request):
     Produk = produk.objects.all()
     Client = client.objects.all()
-    return render(request, 'products-idx.html', {'Produk': Produk, 'Client':Client})
+    wa_instance = get_object_or_404(profil)
+    return render(request, 'products-idx.html', {'Produk': Produk, 'Client':Client, 'imageku': wa_instance})
 
 def add_produk(request):
     if request.method == 'POST':
@@ -21,7 +23,8 @@ def add_produk(request):
         form = ProdukForm()
         formDropdown = ClientForm()
     clients = client.objects.all()
-    return render(request, 'add-products.html', {'form': form, 'clients': clients})
+    wa_instance = get_object_or_404(profil)
+    return render(request, 'add-products.html', {'form': form, 'clients': clients, 'imageku': wa_instance})
 
 def update_produk(request, pk):
     produk_instance = get_object_or_404(produk, pk=pk)
@@ -33,7 +36,8 @@ def update_produk(request, pk):
     else:
         form = ProdukForm(instance=produk_instance)
     clients = client.objects.all()
-    return render(request, 'edit-products.html', {'form': form, 'clients': clients})
+    wa_instance = get_object_or_404(profil)
+    return render(request, 'edit-products.html', {'form': form, 'clients': clients, 'imageku': wa_instance})
 
 def delete_produk(request, pk):
     produk_instance = get_object_or_404(produk, pk=pk)

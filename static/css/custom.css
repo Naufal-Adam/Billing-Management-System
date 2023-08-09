@@ -24,3 +24,40 @@
 .side-predesc {
     height: fit-content;
 }
+
+#upload-button {
+    padding: 6px;
+    color: #fff;
+    background: #1e8a97;
+    border: 2px solid #fff;
+    cursor: pointer;
+    outline: 0;
+}
+form.form {
+    padding: 5px;
+    background: #fff;
+}
+.uploadFile {
+    background-color: #1e8a97;
+    color: white;
+    padding: 0.5rem;
+    font-family: sans-serif;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+
+  #imageProfil {
+    padding: 0.5rem;
+    font-family: sans-serif;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  #removeFile {
+    padding: 0.5rem;
+    font-family: sans-serif;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-top: 1rem;
+  }

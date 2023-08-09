@@ -1,12 +1,14 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import client, clientAlamat
 from .formKhususClient import ClientForm, ClientAlamatForm
+from profiles.models import profil
 
 # Create your views here.
 def client_view(request):
     Client = client.objects.all()
     Alamat = clientAlamat.objects.all()
-    return render(request, 'clients-idx.html', {'Client': Client, 'Alamat': Alamat})
+    wa_instance = get_object_or_404(profil)
+    return render(request, 'clients-idx.html', {'Client': Client, 'Alamat': Alamat, 'imageku': wa_instance})
 
 def add_client(request):
     if request.method == 'POST':
@@ -21,7 +23,8 @@ def add_client(request):
     else:
         form = ClientForm()
         formAlamat = ClientAlamatForm()
-    return render(request, 'add-clients.html', {'form': form, 'formAlamat': formAlamat})
+    wa_instance = get_object_or_404(profil)
+    return render(request, 'add-clients.html', {'form': form, 'formAlamat': formAlamat, 'imageku': wa_instance})
 
 def update_client(request, pk):
     client_instance = get_object_or_404(client, pk=pk)
@@ -38,7 +41,8 @@ def update_client(request, pk):
     else:
         form = ClientForm(instance=client_instance)
         formAlamat = ClientAlamatForm(instance=alamat_instance)
-    return render(request, 'edit-clients.html', {'form': form, 'formAlamat': formAlamat})
+    wa_instance = get_object_or_404(profil)
+    return render(request, 'edit-clients.html', {'form': form, 'formAlamat': formAlamat, 'imageku': wa_instance})
 
 def delete_client(request, pk):
     client_instance = get_object_or_404(client, pk=pk)

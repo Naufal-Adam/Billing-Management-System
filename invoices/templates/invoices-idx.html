@@ -20,12 +20,13 @@
     </div>
     <div class="row">
         <div class="col-12 col-xl-12">
-            <div class="d-flex justify-content-end">
-                <button class="btn btn-main mb-3"><i data-feather="plus-square"></i></button>
+            <div class="d-flex justify-content-end gap-3">
+                <a href="{% url 'add_invoice' %}" class="btn btn-main mb-3"><i data-feather="plus-square"></i></a>
+                <a href="" class="btn btn-main mb-3"><i data-feather="clock"></i></a>
             </div>
             <div class="card">
                 <div class="card-body">
-                    <table id="datatables-ajax" class="table table-striped" style="width:100%">
+                    <table id="invoice-idx" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -47,5 +48,5 @@
 {% block body_lib %}
     <script src="{% static 'js/jquery-3.7.0.min.js' %}"></script>
     <script src="{% static 'js/datatables.js' %}"></script>
-    <script src="{% static 'js/custom-invoice.js' %}"></script>
+    <script src="{% static 'js/modules-datatables.js' %}"></script>
 {% endblock body_lib %}

@@ -17,7 +17,7 @@
                         {{user.username}}
                     </a>
                     <div class="dropdown-menu dropdown-menu-start">
-                        <a class="dropdown-item" href="{% url 'profil_edit' pk=user.pk%}"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+                        <a class="dropdown-item" href="{% url 'profil_view'%}"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
                         <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="pages-settings.html"><i class="align-middle me-1" data-feather="settings"></i> Settings &
@@ -39,7 +39,7 @@
                 </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-profile.html">
+                <a class="sidebar-link" href="{% url 'invoice_njir' %}">
                     <i class="align-middle" data-feather="file-text"></i> <span class="align-middle">Invoice</span>
                 </a>
             </li>

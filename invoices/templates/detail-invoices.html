@@ -1,0 +1,113 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block head_lib %}
+    <link rel="stylesheet" href="{% static 'css/light.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock head_lib %}
+
+{% block content %}
+<div class="container-fluid p-0">
+    <div class="col-12 d-none d-sm-block">
+        <h3><strong>Detail Invoice</strong></h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Library</a></li>
+                <li class="breadcrumb-item active">Data</li>
+            </ol>
+        </nav>
+        <hr style="border: 2px solid #1e8a97;">
+    </div>
+    <div class="row">
+        <div class="col-12 col-xl-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="fs-3 text-dark fw-bolder">Invoice No 100121</h5>
+                </div>  
+                <div class="card-body">
+                    <form action="">
+                        <div class="row">
+                            <div class="mb-3 col-md-8">
+                                <label class="form-label">Nama Client:</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                            <div class="mb-3 col-md-8">
+                                <label class="form-label">Date:</label>
+                                <input type="text" class="form-control flatpickr-date" placeholder="Date" />
+                            </div>
+                            <div class="mb-3 col-md-8">
+                                <label class="form-label">Email:</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                            <div class="mb-3 col-md-8">
+                                <label class="form-label">Sub Total:</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h5 class="text-black fw-bolder mb-3">Payment</h5>
+                            <div class="mb-3 col-md-8">
+                                <label class="form-label">Date:</label>
+                                <input type="text" class="form-control flatpickr-date" placeholder="Date" />
+                            </div>
+                            <div class="mb-3 col-md-8">
+                                <div class="d-flex justify-content-end">
+                                    <label for="file" class="form-label w-100">Bukti Pembayaran:
+                                        <div class="d-flex">
+                                            <input type="file" hidden="hidden" id="file" />
+                                            <span id="custom-msg" class="border border-2 d-flex align-items-center w-100">No file chosen, yet.</span>
+                                            <button type="button" class="rounded rounded-3" id="upload-button">Browse</button> 
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <div class="d-flex gap-3">
+                                <button class="btn btn-main">Preview Invoice</button>
+                                <button class="btn btn-success" id="btn-lunas">Lunas</button>
+                            </div>
+                        </div>
+                    </form>
+                    <table class="table">
+                        <thead class="bg-main">
+                            <tr>
+                                <th style="border-right: 1px solid black;">No</th>
+                                <th style="border-right: 1px solid black;">Produk</th>
+                                <th style="border-right: 1px solid black;">Item</th>
+                                <th style="border-right: 1px solid black;">Price</th>
+                                <th style="border-right: 1px solid black;">Qty</th>
+                                <th style="border-right: 1px solid black;">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border-right: 1px solid black;">1</td>
+                                <td style="border-right: 1px solid black;">TempestSend</td>
+                                <td style="border-right: 1px solid black;">Tagihan Sistem</td>
+                                <td style="border-right: 1px solid black;">5.000.000</td>
+                                <td style="border-right: 1px solid black;">1</td>
+                                <td style="border-right: 1px solid black;">5.000.000</td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="bg-main">
+                            <tr>
+                                <td colspan="4" class="fw-bolder text-center">Total</td>
+                                <td style="border-right: 1px solid black; border-left: 1px solid black;">2</td>
+                                <td>5.000.000</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block body_lib %}
+    <script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.7.0.min.js' %}"></script>
+    <script src="{% static 'js/detail-invoices.js' %}"></script>
+{% endblock body_lib %}

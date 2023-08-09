@@ -21,20 +21,20 @@
         <div class="col-12 col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="">
+                    <form method="post">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="mb-3 col-md-8">
                                 <label class="form-label">No Invoice:</label>
                                 <input type="text" class="form-control" placeholder="No Invoice" />
+                                {{form.no_invoice}}
                             </div>
                             <div class="mb-3 col-md-8">
                                 <label class="form-label">Client</label>
-                                <select class="form-control choices-single">
-                                    <option value="" disabled selected>Select Client</option>
-                                    <option value="CA">California</option>
-                                    <option value="NV">Nevada</option>
-                                    <option value="OR">Oregon</option>
-                                    <option value="WA">Washington</option>
+                                <select class="form-control choices-single" name="nama_client" id="nama_client">
+                                    {% for client in client %}
+                                    <option value="{{ client.id }}">{{ client.nama_client }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                             <div class="mb-3 col-md-8">
@@ -47,12 +47,10 @@
 							</div>
                             <div class="mb-3 col-md-8">
                                 <label class="form-label">Product:</label>
-                                <select class="form-control choices-single">
-                                    <option value="" disabled selected>Select Product</option>
-                                    <option value="CA">California</option>
-                                    <option value="NV">Nevada</option>
-                                    <option value="OR">Oregon</option>
-                                    <option value="WA">Washington</option>
+                                <select class="form-control choices-single" name="nama_produk" id="nama_produk">
+                                    {% for produk in produk %}
+                                    <option value="{{ produk.id }}">{{ produk.nama_produk }}</option>
+                                    {% endfor %}
                                 </select>
                                 <div class="mt-2 col-md-12">
                                     <input type="text" class="form-control flatpickr-date" placeholder="Input an item" />

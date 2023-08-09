@@ -1,6 +1,5 @@
 from django import forms
-from .models import produk
-from clients.models import client
+from .models import produk, client
 
 class ProdukForm(forms.ModelForm):
     nama_produk = forms.CharField(
@@ -17,4 +16,7 @@ class ProdukForm(forms.ModelForm):
         fields = ['nama_produk', 'type_produk']
         
 class ProdukFormWithDropdown(forms.Form):
-    nama_client = forms.ModelChoiceField(queryset=client.objects.all(), empty_label=None)
+    nama_client = forms.ModelChoiceField(
+        queryset=client.objects.all(), 
+        empty_label=None,
+        widget=forms.Select(attrs={'class': 'form-control choices-single'}))

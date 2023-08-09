@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .models import produk
 from clients.models import client
 from clients.formKhususClient import ClientForm
-from .form import ProdukForm
+from .form import ProdukForm, ProdukFormWithDropdown
 from profiles.models import profil
 
 # Create your views here.
@@ -15,16 +15,18 @@ def produk_view(request):
 def add_produk(request):
     if request.method == 'POST':
         form = ProdukForm(request.POST)
-        formDropdown = ClientForm(request.POST)
-        if form.is_valid() and formDropdown.is_valid:
-            form.save()
+        formDropdown = ProdukFormWithDropdown(request.POST)
+        if form.is_valid() and formDropdown.is_valid():
+            produk = form.save(commit=False)
+            selected_client = formDropdown.cleaned_data['nama_client']
+            produk.client = selected_client
+            produk.save()
             return redirect('produk_view')
     else:
         form = ProdukForm()
-        formDropdown = ClientForm()
-    clients = client.objects.all()
+        formDropdown = ProdukFormWithDropdown()
     wa_instance = get_object_or_404(profil)
-    return render(request, 'add-products.html', {'form': form, 'clients': clients, 'imageku': wa_instance})
+    return render(request, 'add-products.html', {'form': form, 'imageku': wa_instance, 'formDrop': formDropdown})
 
 def update_produk(request, pk):
     produk_instance = get_object_or_404(produk, pk=pk)

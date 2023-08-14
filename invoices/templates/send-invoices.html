@@ -24,24 +24,19 @@
                         <h5 class="fs-3 text-dark fw-bolder">Send Invoice To</h5>
                     </div>
                     <div class="card-body">
-                        <form action="">
+                        <form method="post">
+                            {% csrf_token %}
                             <div class="mb-3 col-md-8">
                                 <label class="form-label">Nama Client:</label>
-                                <select class="form-control choices-single">
-                                    <option value="" disabled selected>Select Client</option>
-                                    <option value="CA">California</option>
-                                    <option value="NV">Nevada</option>
-                                    <option value="OR">Oregon</option>
-                                    <option value="WA">Washington</option>
-                                </select>
+                                {{ form.client }}
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label class="form-label">Email:</label>
-                                <input type="text" class="form-control" placeholder="GuraGu@gmail.com" />
+                                <input type="text" class="form-control" value="" disabled />
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label class="form-label">No. Telp(WA):</label>
-                                <input type="text" class="form-control" placeholder="081428793873" />
+                                <input type="text" class="form-control" value="test" disabled/>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <div class="form-label">Send via:</div>

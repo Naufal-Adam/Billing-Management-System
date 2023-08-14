@@ -12,4 +12,4 @@ class produk(models.Model):
     
 
     def __str__(self):
-        return f"{self.nama_produk} {self.type_produk}"
+        return f"{self.nama_produk}"

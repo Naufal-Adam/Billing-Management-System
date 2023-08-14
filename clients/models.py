@@ -10,7 +10,7 @@ class client(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
-        return f"{self.nama_client} {self.no_wa_client} {self.email_client} {self.kode_pos}"
+        return f"{self.nama_client}"
     
 class clientAlamat(models.Model):
     client = models.OneToOneField(client, on_delete=models.CASCADE, null=True)

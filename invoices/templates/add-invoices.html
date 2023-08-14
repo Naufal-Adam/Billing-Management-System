@@ -1,5 +1,6 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
+{% load custom_filters %}
 
 {% block head_lib %}
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
@@ -21,57 +22,51 @@
         <div class="col-12 col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <form method="post">
+                    <form method="post" action="{% url 'add_action' 'add-invoice' %}" id="invoice-form">
                         {% csrf_token %}
                         <div class="row">
                             <div class="mb-3 col-md-8">
                                 <label class="form-label">No Invoice:</label>
-                                <input type="text" class="form-control" placeholder="No Invoice" />
                                 {{form.no_invoice}}
                             </div>
                             <div class="mb-3 col-md-8">
                                 <label class="form-label">Client</label>
-                                <select class="form-control choices-single" name="nama_client" id="nama_client">
-                                    {% for client in client %}
-                                    <option value="{{ client.id }}">{{ client.nama_client }}</option>
-                                    {% endfor %}
-                                </select>
+                                {{formDropClient.nama_client}}
                             </div>
                             <div class="mb-3 col-md-8">
 								<label class="form-label">Invoice Date:</label>
-								<input type="text" class="form-control flatpickr-date" placeholder="Date" />
+								{{form.invoice_date}}
 							</div>
                             <div class="mb-3 col-md-8">
 								<label class="form-label">Due Date:</label>
-								<input type="text" class="form-control flatpickr-date" placeholder="Date" />
+								{{form.invoice_due_date}}
 							</div>
+                    </form>
+                    <form action="{% url 'add_action' 'add-produk' %}" method="post">
+                        {% csrf_token %}
                             <div class="mb-3 col-md-8">
                                 <label class="form-label">Product:</label>
-                                <select class="form-control choices-single" name="nama_produk" id="nama_produk">
-                                    {% for produk in produk %}
-                                    <option value="{{ produk.id }}">{{ produk.nama_produk }}</option>
-                                    {% endfor %}
-                                </select>
+                                {{formDropProduk.nama_produk}}
                                 <div class="mt-2 col-md-12">
-                                    <input type="text" class="form-control flatpickr-date" placeholder="Input an item" />
+                                    {{formPro.item}}
                                 </div>
                                 <div class="mt-2 row">
                                     <div class="d-flex gap-3">
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control flatpickr-date" placeholder="Qty" />
+                                            {{formPro.quantity}}
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control flatpickr-date" placeholder="Price" />
+                                            {{formPro.price}}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-main mb-3">Add product</button>
+                        <button class="btn btn-main mb-3" type="submit">Add product</button>
                     </form>
                     <div class="table-responsive">
                         <table class="table table-bordered">
-                            <thead>
+                            <thead class="bg-main">
                                 <tr>
                                     <th style="width:5%;">No.</th>
                                     <th style="width:20%">Produk</th>
@@ -79,12 +74,55 @@
                                     <th style="width:20%;">Price</th>
                                     <th style="width:5%;">Qty</th>
                                     <th style="width:20%;">Subtotal</th>
-                                    <th style="width:5%;"></th>
+                                    <th style="width:5%;">Act</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                {% for item in pro %}
+                                <tr>
+                                    <th>{{item.id}}</th>
+                                    <th>{{item.produk.nama_produk}}</th>
+                                    <th>{{item.item}}</th>
+                                    <th>{{item.price}}</th>
+                                    <th>{{item.quantity}}</th>
+                                    <th>kosong sek</th>
+                                    <th>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            Hapus
+                                        </button>
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                Apakah Yakin Ingin Menghapus Produk yang Ini
+                                                </div>
+                                                <form action="{% url 'delete_produk_invoice' item.pk %}" method="post">
+                                                    {% csrf_token %}
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                                    <button type="submit" class="btn btn-danger" value="delete_client">Hapus</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                                {% endfor %}
                             </tbody>
+                            <tfoot class="bg-main">
+                                <tr>
+                                    <td colspan="4" class="fw-bolder text-center">Total</td>
+                                    <td>
+                                        {{totalQuantity}}
+                                    </td>
+                                    <td colspan="2"></td>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                     <div class="d-flex justify-content-between">
@@ -93,9 +131,9 @@
                             <button class="btn btn-warning">Edit</button>
                         </div>
                         <div class="d-flex gap-3 flex-wrap">
-                            <button class="btn btn-outline-success" id="btn-cancel">Cancel</button>
-                            <button class="btn btn-main" id="btn-next">Next</button>
-                            <button class="btn btn-main">Submit</button>
+                            <a href="{% url 'invoice_njir' %}" class="btn btn-outline-success">Cancel</a>
+                            <a href="{% url 'invoice_send' %}" class="btn btn-main">Next</a>
+                            <button class="btn btn-main" type="submit" form="invoice-form">Submit</button>
                         </div>
                     </div>
                 </div>

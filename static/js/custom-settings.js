@@ -8,7 +8,7 @@ $(document).ready(function () {
 
     flatpickr(".flatpickr-date", {
         enableTime: false,
-        dateFormat: "d-m-Y",
+        dateFormat: "Y-m-d",
     });
 
     flatpickr(".flatpickr-time", {

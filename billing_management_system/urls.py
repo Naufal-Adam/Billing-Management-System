@@ -30,5 +30,6 @@ urlpatterns = [
     path('', include('clients.urls')),
     path('', include('profiles.urls')),
     path('', include('invoices.urls')),
+    path('', include('settings.urls')),
     path('logout', views.userLogout, name='logout_njir')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

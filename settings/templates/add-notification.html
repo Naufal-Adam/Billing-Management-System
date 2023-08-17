@@ -17,54 +17,43 @@
 		<div class="col-12 col-xl-12">
 			<div class="card">
 				<div class="card-body">
-					<form>
+					<form method="post">
+						{% csrf_token %}
 						<div class="row">
 							<div class="mb-3 col-md-6">
 								<label class="form-label">Date:</label>
-								<input type="text" class="form-control flatpickr-date" placeholder="Date" />
+								{{form.date_notif}}
 							</div>
 							<div class="mb-3 col-md-6">
 								<label class="form-label">Time:</label>
-								<input type="text" class="form-control flatpickr-time" placeholder="HH:MM" />
+								{{form.time_notif}}
 							</div>
 							<div class="mb-3 col-md-8">
 								<label class="form-label">Client:</label>
-								<select class="form-control choices-single">
-									<option value="" disabled selected>Nama Client</option>
-									<option value="CA">California</option>
-									<option value="NV">Nevada</option>
-									<option value="OR">Oregon</option>
-									<option value="WA">Washington</option>
-								</select>
+								{{formClientDrop.nama_client}}
 							</div>
 							<div class="mb-3 col-md-8">
 								<label class="form-label">Product:</label>
-								<select class="form-control choices-single">
-									<option value="" disabled selected>Nama Client</option>
-									<option value="CA">California</option>
-									<option value="NV">Nevada</option>
-									<option value="OR">Oregon</option>
-									<option value="WA">Washington</option>
-								</select>
+								{{formProdukDrop.nama_produk}}
 							</div>
 							<div class="mb-3 col-md-8">
 								<label class="form-label">Text:</label>
-								<textarea class="form-control" placeholder="*Dear Admin, it's invoice time for...." rows="3"></textarea>
+								{{form.text_notif}}
 							</div>
 							<div class="mb-3 col-md-8">
 								<div class="form-label">Send to:</div>
 								<div class="input-group d-flex gap-3">
 									<div class="d-flex align-content-center col-md-6">
 										<div class="input-group-text bg-transparent" style="border: none;">
-											<input type="checkbox">
+											{{form.checkbox_email}}
 										</div>
-										<input type="text" class="form-control" placeholder="aizensosuke@gmail.com">
+										{{form.to_who}}
 									</div>
 									<div class="d-flex align-content-center col-md-5">
 										<div class="input-group-text bg-transparent" style="border: none;">
-											<input type="checkbox">
+											{{form.checkbox_sms}}
 										</div>
-										<input type="text" class="form-control" placeholder="081234567859">
+										{{form.to_sms}}
 									</div>
 								</div>
 							</div>						
@@ -85,7 +74,7 @@
 						</div>
 						<div class="mb-3 col-md-2 d-flex gap-3">
 							<button class="btn btn-outline-success" id="btn-cancel">Cancel</button>
-							<button class="btn btn-success" id="btn-submit">Submit</button>
+							<button class="btn btn-success" type="submit">Submit</button>
 						</div>
 					</form>
 				</div>
